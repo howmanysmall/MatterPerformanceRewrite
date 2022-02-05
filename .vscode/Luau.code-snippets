@@ -1,0 +1,51 @@
+{
+	"Matter2 Component": {
+		"body": [
+			"local ReplicatedStorage = game:GetService(\"ReplicatedStorage\")",
+			"local Matter = require(ReplicatedStorage.Matter2)",
+			"",
+			"return Matter.Component(\"${0:$TM_FILENAME_BASE}\")",
+			"",
+		],
+
+		"description": "Creates a new Matter Component.",
+		"prefix": ["mattercomponent"],
+	},
+
+	"Matter2 System Function": {
+		"body": [
+			"local ReplicatedStorage = game:GetService(\"ReplicatedStorage\")",
+			"local Matter = require(ReplicatedStorage.Matter2)",
+			"",
+			"local function ${0:$TM_FILENAME_BASE}(World: Matter.World)",
+			"end",
+			"",
+			"return ${0:$TM_FILENAME_BASE}",
+			"",
+		],
+
+		"description": "Creates a new Matter System (function).",
+		"prefix": ["mattersystemfunction"],
+	},
+
+	"Matter2 System Table": {
+		"body": [
+			"local ReplicatedStorage = game:GetService(\"ReplicatedStorage\")",
+			"local Matter = require(ReplicatedStorage.Matter2)",
+			"",
+			"local ${0:$TM_FILENAME_BASE} = {}",
+			"${0:$TM_FILENAME_BASE}.After = {}",
+			"${0:$TM_FILENAME_BASE}.Event = \"Default\"",
+			"${0:$TM_FILENAME_BASE}.Priority = 0",
+			"function ${0:$TM_FILENAME_BASE}.System(World: Matter.World)",
+			"end",
+			"",
+			"table.freeze(${0:$TM_FILENAME_BASE})",
+			"return ${0:$TM_FILENAME_BASE}",
+			"",
+		],
+
+		"description": "Creates a new Matter System (table).",
+		"prefix": ["mattersystemtable"],
+	},
+}
