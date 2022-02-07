@@ -1,5 +1,4 @@
 local None = require(script.Parent.None)
-
 type GenericTable = {[any]: any}
 
 local function Merge(...: GenericTable)
