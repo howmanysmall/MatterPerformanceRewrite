@@ -1,11 +1,4 @@
 {
 	"name": "Matter2",
-	"tree": {
-		"$className": "DataModel",
-		"ReplicatedStorage": {
-			"$className": "ReplicatedStorage",
-			"$ignoreUnknownInstances": true,
-			"Matter2": {"$path": "src"}
-		}
-	}
+	"tree": {"$path": "src"}
 }
