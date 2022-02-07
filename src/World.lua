@@ -50,21 +50,6 @@ function World.new()
 	}, World)
 end
 
-local function NewQueryArchetype(self, QueryArchetype)
-	local QueryCache = self.QueryCache
-	if QueryCache[QueryArchetype] == nil then
-		QueryCache[QueryArchetype] = {}
-	else
-		return -- Archetype isn't actually new
-	end
-
-	for EntityArchetype in pairs(self.Archetypes) do
-		if Archetype.AreArchetypesCompatible(QueryArchetype, EntityArchetype) then
-			QueryCache[QueryArchetype][EntityArchetype] = true
-		end
-	end
-end
-
 local function TransitionArchetype(self, Id, Components)
 	debug.profilebegin("TransitionArchetype")
 	local NewArchetype = nil
@@ -413,11 +398,24 @@ function World:Query(...)
 	local QueryLength = select("#", ...)
 
 	local ListArchetype = Archetype.ArchetypeOf(...)
-	if self.QueryCache[ListArchetype] == nil then
-		NewQueryArchetype(self, ListArchetype)
+
+	local QueryCache = self.QueryCache
+	local CompatibleArchetypes = QueryCache[ListArchetype]
+	if CompatibleArchetypes == nil then
+		CompatibleArchetypes = {}
+		QueryCache[ListArchetype] = CompatibleArchetypes
+
+		for EntityArchetype in pairs(self.Archetypes) do
+			if Archetype.AreArchetypesCompatible(ListArchetype, EntityArchetype) then
+				CompatibleArchetypes[EntityArchetype] = true
+			end
+		end
 	end
 
-	local CompatibleArchetypes = self.QueryCache[ListArchetype]
+	-- if self.QueryCache[ListArchetype] == nil then
+	-- 	NewQueryArchetype(self, ListArchetype)
+	-- end
+
 	debug.profileend()
 
 	if next(CompatibleArchetypes) == nil then
