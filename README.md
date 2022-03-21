@@ -3,7 +3,7 @@ faster for what matters
 
 [Original](https://github.com/evaera/matter)
 
-I only rewrote this to learn the API better and to see if I was able to make it faster. I think I succeeded in doing both, so here it is.
+I only rewrote this to learn the API better and to see if I was able to make it faster. I think I succeeded in doing both, so here it is. Don't really recommend using this over the original as I don't intend to update it.
 
 ## Changes
 
